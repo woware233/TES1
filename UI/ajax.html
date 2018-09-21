@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script type="text/javascript">
+    $(function() {
+        $.ajax({
+            type : 'POST',
+            dataType : "json",
+            url : '${pageContext.request.contextPath}/menuAction!getParentMenu.action',
+            success : function(data) {
+                $.each(data, function(i, n) {//加载父类节点即一级菜单
+                    if (i == 0) {//显示第一个一级菜单下的二级菜单
+                        $('#layout_west_accordion').accordion('add', {
+                            title : n.text,
+                            iconCls : n.iconCls,
+                            selected : true,
+                            content : '<div style="padding:10px"><ul name="'+n.text+'"></ul></div>',
+                        });
+                    } else {
+                        $('#layout_west_accordion').accordion('add', {
+                            title : n.text,
+                            iconCls : n.iconCls,
+                            selected : false,
+                            content : '<div style="padding:10px"><ul name="'+n.text+'"></ul></div>',
+                        });
+                    }
+ 
+                });
+            }
+        });
+        //异步加载子节点，即二级菜单
+        $('#layout_west_accordion').accordion({
+            onSelect : function(title, index) {
+                $("ul[name='" + title + "']").tree({
+                    url : '${pageContext.request.contextPath}/menuAction!getMenuTree.action',
+                    queryParams : {
+                        text : title
+                    },
+                    animate : true,
+                    lines : true,//显示虚线效果  
+                    onClick: function(node){// 在用户点击一个子节点即二级菜单时触发addTab()方法,用于添加tabs
+                        if(node.url){//判断url是否存在，存在则创建tabs
+                            addTab(node);
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+<div id="layout_west_accordion" class="easyui-accordion" data-options="fit:true,border:false,nimate:true,lines:true">
+    <div title="搜索菜单" data-options="iconCls:'icon-search',collapsed:false,collapsible:false" style="padding: 10px;">
+        <input id="layout_west_sc" class="easyui-searchbox" data-options="prompt:'请输入你需要的菜单'" style="width: 180px; height: 25px;">
+    </div>
+</div>
+ 
