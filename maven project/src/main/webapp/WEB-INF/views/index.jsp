@@ -6,40 +6,52 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Insert title here</title>
-    <link rel="stylesheet" href="../mian.css">
-    <script type="text/javascript" src="../vue.js"></script>
-    <script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/mian.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/vue.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/themes/icon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/themes/default/easyui.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/themes/demo.css">
 </head>
 <body>
-<div class="top">在线评教系统 <a href="#" style="text-decoration:underline;font-size: 20px;color: red">退出</a></div>
-<div class="left">
-    <ul style="padding-top: 15px">
-        <c:forEach items="${pmenu}" var="item">
-        <ul style="padding-top: 15px">
-            <li class="left_li_1"><a href="${item.url}" >${item.title}${item.pmcode}</a>
-                <c:forEach items="${cmenu}" var="item2">
-            <li class="left_li_2">${item2.gname}</li>
-            </c:forEach><ul>
-            </c:forEach>
+<div class="top">
+    <div style="float: left;margin-top: 10px;margin-left: 30px"><img src="img/CG_log.gif" height="80px" width="400px" /></div>
+    <div style="float: left;margin-left: 300px">在线评教系统 </div>
+    <div style="float: left"><a href="#" style="text-decoration:underline;font-size: 20px;color: red">退出</a></div>
 </div>
-
-<div class="easyui-dialog" style="width:400px;height:200px">
-
-<input id="tt" style="width:200px" /></div>
-<script>
-    $(function(){
-        $('#tt').tree({
-            url: '/TVS/getTree.do',
-            loadFilter: function(data){
-                if (data.d){
-                    return data.d;
-                } else {
-                    return data;
-                }
-            }
-        });
-    });
-</script>
+<div class="left">
+    <div class="easyui-accordion" style="width:100%;height:400px;padding-top: 0px;padding-left: 0px;border: none;background: none">
+        <c:forEach items="${pmenu}" var="item">
+            <div  title="${item.title}" style="overflow:auto;padding:10px;background:none">
+            <c:forEach items="${cmenu}" var="item2">
+                <ul>
+                    <li class="left_li">${item2.gname}</li>
+                   </ul> </c:forEach>
+            </div>
+        </c:forEach>
+    </div>
+    <!--<ul style="padding-top: 15px">
+        <li class="left_li"><a href="#" >用户管理</a><ul style="padding-top: 15px">
+            <li class="left_li_1"><a href="#" >用户管理</a><ul>
+                <li class="left_li_2">学生表</li>
+                <li class="left_li_2">教师表</li>
+                <li class="left_li_2">领导表</li></ul></li>
+            <li class="left_li_1"><a href="#" >关系管理</a><ul>
+                <li class="left_li_2">班级表</li>
+                <li class="left_li_2">院系表</li>
+                <li class="left_li_2">权限设置</li></ul></li></ul></li>
+        <li class="left_li"><a href="#">问卷管理</a><ul style="padding-top: 15px">
+            <li class="left_li_1"><a href="#" >问题库</a></li>
+            <li class="left_li_1"><a href="biao_1.html"  target="fu" >问卷库</a></li></ul></li>
+        <li class="left_li"><a href="#">评教管理</a><ul style="padding-top: 15px">
+            <li class="left_li_1"><a href="#" >成绩统计</a></li>
+            <li class="left_li_1"><a href="#" >创建问卷</a><ul>
+            <li class="left_li_2">基础数据设置</li>
+            <li class="left_li_2">指标设置</li></ul></li></ul></li>
+    </ul>-->
+</div>
+<div class="right"><iframe src="biao_2.html" name="fu"  style="width: 100%;height: 830px"></iframe>
+</div>
 </body>
 </html>

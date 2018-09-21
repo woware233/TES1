@@ -23,7 +23,10 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <mvc:default-servlet-handler/>
+    <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+    <mvc:resources location="/WEB-INF/script/" mapping="/js/**"/>
+    <mvc:resources location="/WEB-INF/img/" mapping="/img/**"/>
+    <mvc:resources location="/WEB-INF/themes/" mapping="/themes/**"/>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="utf-8"/>
         <!-- 最大内存大小 -->
