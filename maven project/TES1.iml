@@ -12,6 +12,9 @@
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/css" />
+          <root url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/img" />
+          <root url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/script" />
         </sourceRoots>
       </configuration>
     </facet>

@@ -20,8 +20,8 @@
     <div class="denglu_1"><b>教师评教系统</b></div>
     <div class="denglu_2">Teachers Comprehensive Evaluation System</div>
     <form method="post" action="/TES1/submit" name="login">
-    <div style="margin-top: 50px;margin-left: 150px"><input style="width: 500px;height: 30px;font-size: 24px;font-family: 方正舒体;" type="text" name="ycode" placeholder="学号/工号"></div>
-    <div style="margin-top: 50px;margin-left: 150px"><input style="width: 500px;height: 30px;font-size: 24px;font-family: 方正舒体;" type="password" name="ypassword" placeholder="密码"></div>
+    <div style="margin-top: 50px;margin-left: 150px"><input style="width: 500px;height: 30px;font-size: 24px;font-family: 方正舒体;" type="text" name="username" placeholder="学号/工号"></div>
+    <div style="margin-top: 50px;margin-left: 150px"><input style="width: 500px;height: 30px;font-size: 24px;font-family: 方正舒体;" type="password" name="password" placeholder="密码"></div>
     <input type="checkbox" style="margin-left: 150px;">记住密码<button class="denglu_3">登录</button><button  style="margin-left: 100px;">重置密码</button>
     </form>
 </div>

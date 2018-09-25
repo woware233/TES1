@@ -3,33 +3,58 @@ package com.tes1.entity;
 import java.util.List;
 
 public class Tree {
-private String id;
-private String text;
-private String pid;
-private List<Tree> treelist;
-public String getId() {
-	return id;
-}
-public void setId(String id) {
-	this.id = id;
-}
-public String getText() {
-	return text;
-}
-public void setText(String text) {
-	this.text = text;
-}
-public String getPid() {
-	return pid;
-}
-public void setPid(String pid) {
-	this.pid = pid;
-}
-public List<Tree> getTreelist() {
-	return treelist;
-}
-public void setTreelist(List<Tree> treelist) {
-	this.treelist = treelist;
-}
+    private String treeid;
+    private String Text;
+    private String Desn;
+    private String ParentID;
+    private String url;
+    private List<Tree> children;
 
+    public String getTreeid() {
+        return treeid;
+    }
+
+    public void setTreeid(String treeid) {
+        this.treeid = treeid;
+    }
+
+    public String getText() {
+        return Text;
+    }
+
+    public void setText(String text) {
+        Text = text;
+    }
+
+    public String getDesn() {
+        return Desn;
+    }
+
+    public void setDesn(String desn) {
+        Desn = desn;
+    }
+
+    public String getParentID() {
+        return ParentID;
+    }
+
+    public void setParentID(String parentID) {
+        ParentID = parentID;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public List<Tree> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Tree> children) {
+        this.children = children;
+    }
 }

@@ -22,36 +22,19 @@
 </div>
 <div class="left">
     <div class="easyui-accordion" style="width:100%;height:400px;padding-top: 0px;padding-left: 0px;border: none;background: none">
-        <c:forEach items="${pmenu}" var="item">
-            <div  title="${item.title}" style="overflow:auto;padding:10px;background:none">
-            <c:forEach items="${cmenu}" var="item2">
-                <ul>
-                    <li class="left_li">${item2.gname}</li>
-                   </ul> </c:forEach>
+        <c:forEach items="${Tree}" var="item">
+            <div  title="${item.text}" style="overflow:auto;padding:10px;background:none">
+
+                    <li class="left_li">${item2.text}</li>
+
             </div>
         </c:forEach>
     </div>
-    <!--<ul style="padding-top: 15px">
-        <li class="left_li"><a href="#" >用户管理</a><ul style="padding-top: 15px">
-            <li class="left_li_1"><a href="#" >用户管理</a><ul>
-                <li class="left_li_2">学生表</li>
-                <li class="left_li_2">教师表</li>
-                <li class="left_li_2">领导表</li></ul></li>
-            <li class="left_li_1"><a href="#" >关系管理</a><ul>
-                <li class="left_li_2">班级表</li>
-                <li class="left_li_2">院系表</li>
-                <li class="left_li_2">权限设置</li></ul></li></ul></li>
-        <li class="left_li"><a href="#">问卷管理</a><ul style="padding-top: 15px">
-            <li class="left_li_1"><a href="#" >问题库</a></li>
-            <li class="left_li_1"><a href="biao_1.html"  target="fu" >问卷库</a></li></ul></li>
-        <li class="left_li"><a href="#">评教管理</a><ul style="padding-top: 15px">
-            <li class="left_li_1"><a href="#" >成绩统计</a></li>
-            <li class="left_li_1"><a href="#" >创建问卷</a><ul>
-            <li class="left_li_2">基础数据设置</li>
-            <li class="left_li_2">指标设置</li></ul></li></ul></li>
-    </ul>-->
+</div>
+
 </div>
 <div class="right"><iframe src="biao_2.html" name="fu"  style="width: 100%;height: 830px"></iframe>
 </div>
+
 </body>
 </html>
