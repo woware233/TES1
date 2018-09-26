@@ -1,6 +1,6 @@
 package com.tes1.entity;
 
-import org.apache.jasper.tagplugins.jstl.core.Url;
+
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class Tree {
     private String Desn;
     private String ParentID;
     private int isLeaf;
-    private String url;
+    private String url; 
     private List<Tree> children;
 
     public String getTreeid() {
