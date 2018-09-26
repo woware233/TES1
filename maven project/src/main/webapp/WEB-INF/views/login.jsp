@@ -10,7 +10,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-\<div class="hei"></div>
+<div class="hei"></div>
 <d--iv class="lunbo"><ul class="lunbo_ul">
     <li class="lunbo_li"><img src="img/timg.jpg" height="950px" width="1900px"/></li>
     <li class="lunbo_li"><img src="img/timg (1).jpg"height="950px" width="1900px"/></li>

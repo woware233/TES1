@@ -6,13 +6,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Insert title here</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/mian.css">
+
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/vue.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.easyui.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/themes/icon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/themes/default/easyui.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/themes/demo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/mian.css">
 </head>
 <body>
 <div class="top">
@@ -24,17 +25,26 @@
     <div class="easyui-accordion" style="width:100%;height:400px;padding-top: 0px;padding-left: 0px;border: none;background: none">
         <c:forEach items="${Tree}" var="item">
             <div  title="${item.text}" style="overflow:auto;padding:10px;background:none">
-
+            <c:forEach items="${Treec}" var="item2">
                     <li class="left_li">${item2.text}</li>
-
+            </c:forEach>
             </div>
         </c:forEach>
     </div>
 </div>
 
 </div>
-<div class="right"><iframe src="biao_2.html" name="fu"  style="width: 100%;height: 830px"></iframe>
+<div class="right"><iframe src="/TES1/welcome" name="fu"  style="width: 1220px;height: 830px"></iframe>
 </div>
+<input id="tt" style="width:200px" />
+<script>
+    $('#tt').tree({
+        url:'TES1/getIndexTree',//将你的菜单拼成这个json格式id，text，child等
+        onClick: function(node){
+            //点击后在右边的框架里打开url
+        }
 
+    });
+</script>
 </body>
 </html>

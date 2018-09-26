@@ -20,7 +20,8 @@ ul,li{ padding:0;
 }
 .left{
     width: 15%;
-    height: 1240px;
+    height: 920px;
+
     float: left;
     background: #e2ffef;
     border-right-style: solid ;
@@ -44,7 +45,7 @@ ul,li{ padding:0;
 }
 .right{
     background: #f4fffb;
-    width: 84%;
+
     height: 840px;
     float: left;
 }

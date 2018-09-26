@@ -1,5 +1,7 @@
 package com.tes1.entity;
 
+import org.apache.jasper.tagplugins.jstl.core.Url;
+
 import java.util.List;
 
 public class Tree {
@@ -7,6 +9,7 @@ public class Tree {
     private String Text;
     private String Desn;
     private String ParentID;
+    private int isLeaf;
     private String url;
     private List<Tree> children;
 
@@ -42,6 +45,14 @@ public class Tree {
         ParentID = parentID;
     }
 
+    public int getIsLeaf() {
+        return isLeaf;
+    }
+
+    public void setIsLeaf(int isLeaf) {
+        this.isLeaf = isLeaf;
+    }
+
     public String getUrl() {
         return url;
     }
@@ -57,4 +68,10 @@ public class Tree {
     public void setChildren(List<Tree> children) {
         this.children = children;
     }
+    @Override
+    public String toString() {
+        return "Menu [id=" + treeid + ", mName=" + Text + ", mParent=" + ParentID
+                + ", mUrl=" + url + "]";
+    }
+
 }

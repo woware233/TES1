@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/logl.css">
+</head>
+<body>
+<img src="img/timg%20(4).jpg" height=920px" width="100%"/>
+<div class="denglu" style="width: 1000px;margin-left: -500px">
+    <div class="denglu_1" style="width: 1000px"><b>欢迎使用教师评教系统</b></div>
+    <div class="denglu_2" style="width: 1000px">Welcome to use teacher evaluation system.</div>
+</div>
+</body>
 </html>
