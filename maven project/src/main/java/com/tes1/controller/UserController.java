@@ -32,6 +32,9 @@ public class UserController {
         return "login";
     }
 
+    @RequestMapping("/biao")
+    public String biao() { return "biao"; }
+
     @RequestMapping("/welcome")
     public String welcome() {
         return "welcome";
