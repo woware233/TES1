@@ -42,6 +42,39 @@ public class UserService {
 		user.getUserid();
 		return null;
 	}
+//树
+    public List<Tree> getIndexTree(int userid) {
+	List<Tree> topList = new ArrayList<>();
+	List<Tree> list = managerDao.getParent(userid);
+	for (Tree tree : list) {
 
+		if (tree.getParentID() == "0") {
+			tree.setChildren(prepareTreeChild(tree.getParentID(), list));
+			topList.add(tree);
+			System.out.println(topList);
+		}
+	}
+	return topList;
+}
+	private List<Tree> prepareTreeChild(String parentID, List<Tree> list) {
+		List<Tree> childList = new ArrayList<>();
+		for (Tree tree : list) {
+
+			if (tree.getParentID() != "0" && tree.getTreeid().equals(parentID)) {
+				childList.add(tree);
+			}
+		}
+		for (Tree tree : childList) {
+			if (tree.getIsLeaf() == 1) {
+				tree.setChildren(prepareTreeChild(tree.getTreeid(), list));
+			}
+		}
+
+		if (childList.size() == 0) {
+			return null;
+		}
+		return childList;
+
+	}
 
 }

@@ -64,41 +64,25 @@ public class UserController {
 
     }
 
+    @RequestMapping(value = "/getTree", method = RequestMethod.GET)
+    public @ResponseBody Map<String, Object> getTree(HttpSession session) {
+        User user=(User)session.getAttribute("curUser");
 
-    @RequestMapping(value = "/getIndexTree", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Tree> getIndexTree(HttpSession session) {
-        User user = (User) session.getAttribute("curUser");
-        List<Tree> topList = new ArrayList<>();
-        List<Tree> list = userService.getParent(user.getUserid());
-        for (Tree tree : list) {
-            // 遍历所有节点，将父菜单id与传过来的id比较
-            if (tree.getParentID() == "0") {
-                tree.setChildren(prepareTreeChild(tree.getParentID(), list));
-                topList.add(tree);
-            }
+        Map<String, Object> result = new HashMap<String, Object>();
+        try {
+            List<Tree> tree = userService.getIndexTree(user.getUserid());
+            result.put("data", tree);
+            result.put("flag", "success");
+        } catch (Exception e) {
+            result.put("flag", "error");
+            e.printStackTrace();
         }
-        return topList;
+        return result;
     }
-    private List<Tree> prepareTreeChild(String parentID, List<Tree> list) {
-        List<Tree> childList = new ArrayList<>();
-        for (Tree tree : list) {
-            // 遍历所有节点，将父菜单id与传过来的id比较
-            if (tree.getParentID() != "0" && tree.getParentID().equals(parentID)) {
-                childList.add(tree);
-            }
-        }
-        for (Tree tree : childList) {
-            if (tree.getIsLeaf() == 1) {
-                tree.setChildren(prepareTreeChild(tree.getTreeid(), list));
-            }
-        }
 
-        if (childList.size() == 0) {
-            return null;
-        }
-        return childList;
 
-    }
+
+
+
 
 }
