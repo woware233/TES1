@@ -1,7 +1,4 @@
 package com.tes1.entity;
-
-import org.apache.jasper.tagplugins.jstl.core.Url;
-
 import java.util.List;
 
 public class Tree {
