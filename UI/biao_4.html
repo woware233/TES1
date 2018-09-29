@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Row Editing in DataGrid - jQuery EasyUI Demo</title>
+    <title>biao_4</title>
     <script src="jq/jquery.min.js"></script>
     <script src="jq/jquery.easyui.min.js"></script>
     <link rel="stylesheet" href="themes/icon.css">
@@ -19,14 +19,16 @@
             list-style:none;
             margin-top: 10px;
         }
+        th{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <div style="margin:20px 0;"></div>
 
-<table id="dg" class="easyui-datagrid" title="Row Editing in DataGrid" style="width:700px;height:auto"
+<table id="dg" class="easyui-datagrid" title="用户管理" style="width:98%;height:auto;text-align: center"
        data-options="
-				iconCls: 'icon-edit',
 				singleSelect: true,
 				toolbar: '#tb',
 				url: 'datagrid_data1.json',
@@ -35,8 +37,9 @@
 			">
     <thead>
     <tr>
+        <th data-options="field:'status',width:50,align:'center',editor:'checkbox'"></th>
         <th data-options="field:'itemid',width:80">ID</th>
-        <th data-options="field:'productid',width:100,
+        <th data-options="field:'productid',width:100,align:'center',
 						formatter:function(value,row){
 							return row.productname;
 						},
@@ -49,11 +52,12 @@
 								url:'products.json',
 								required:true
 							}
-						}">Name</th>
-        <th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox',options:{precision:1}}">Name</th>
-        <th data-options="field:'unitcost',width:80,align:'right',editor:'numberbox'">Name</th>
-        <th data-options="field:'attr1',width:250,editor:'textbox'">Name</th>
-        <th data-options="field:'status',width:60,align:'center',editor:{type:'checkbox',options:{on:'P',off:''}}">Name</th>
+						}">部门</th>
+        <th data-options="field:'listprice',width:330,align:'center',editor:'numberbox'">联系电话</th>
+        <th data-options="field:'unitcost',width:200,align:'center',editor:'numberbox'">工号</th>
+        <th data-options="field:'attr1',width:360,editor:'textbox',align:'center'" >备注1</th>
+        <th data-options="field:'attr1',width:360,editor:'textbox',align:'center'" >备注2</th>
+        <th data-options="field:'attr1',width:360,editor:'textbox',align:'center'" >备注3</th>
     </tr>
     </thead>
 </table>
@@ -61,9 +65,9 @@
 <div id="tb" style="height:auto">
     <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="$('#add').window('open')">新增</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="$('#del').window('open')">删除</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Accept</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Reject</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">GetChanges</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">保存</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">撤销</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">查询</a>
 </div>
 
 <script type="text/javascript">
@@ -124,15 +128,22 @@
 </script>
 <div style="margin:20px 0;">
 </div>
-<div id="add" class="easyui-window" title="新增"  closed="true" style="width:800px;height:400px;padding:10px;">
-    <div><lu>
-        <li>name<input style="margin-left: 100px;width: 200px"></li>
-        <li>name<input style="margin-left: 100px;width: 200px"></li>
-        <li>name<input style="margin-left: 100px;width: 200px"></li>
-        <li>name<input style="margin-left: 100px;width: 200px"></li></lu>
+<div id="add" class="easyui-window" title="新增"  closed="true" style="width:600px;height:400px;padding:10px;">
+    <div>
+        <div style="margin-left:110px;margin-top: 40px"><lu>
+            <li>name<input style="margin-left: 100px;width: 200px"></li>
+            <li>name<select style="margin-left: 100px;width: 200px">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option></select></li>
+            <li>name<input style="margin-left: 100px;width: 200px"></li>
+            <li>name<input style="margin-left: 100px;width: 200px"></li>
+            <li>name<input style="margin-left: 100px;width: 200px"></li>
+            <li>name<input style="margin-left: 100px;width: 200px"></li></lu></div>
     </div>
-    <a href="javascript:void(0)" class="easyui-linkbutton"  onclick="append()">新增</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#add').window('close')">取消</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="margin-left: 200px;margin-top: 40px" onclick="append()">新增</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="margin-left: 100px;margin-top: 40px"onclick="$('#add').window('close')">取消</a>
 </div>
 <div style="margin:20px 0;">
 </div>
@@ -142,7 +153,4 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#del').window('close')">取消</a>
 </div>
 </body>
-<script type="text/javascript">
-
-</script>
 </html>
