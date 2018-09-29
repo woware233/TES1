@@ -7,7 +7,7 @@ public class Tree {
     private String Desn;
     private String ParentID;
     private int isLeaf;
-    private String url;
+    private String url; 
     private List<Tree> children;
 
     public String getTreeid() {

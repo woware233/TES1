@@ -1,5 +1,6 @@
 package com.tes1.service;
 
+import com.tes1.entity.Department;
 import com.tes1.entity.Tree;
 import com.tes1.entity.User;
 import org.apache.commons.lang.StringUtils;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -22,6 +24,25 @@ public class UserService {
 
 	public List<Tree> getParent(int userid) {
 		return managerDao.getParent(userid);
+	}
+	//
+
+	public List<Department> getDepartment(Map<String, Object> map) {
+		return managerDao.getDepartment(map);}
+	public Long getTotal(Map<String, Object> map) {
+		return managerDao.getTotal(map);
+	}
+
+	public int addDept(Department department) {
+		return managerDao.addDept(department);
+	}
+
+	public int updateDept(Department department) {
+		return managerDao.updateDept(department);
+	}
+
+	public int deleteDept(int DeptID) {
+		return managerDao.deleteDept(DeptID);
 	}
 
 	public boolean execute(String username, String password) {
@@ -76,5 +97,6 @@ public class UserService {
 		return childList;
 
 	}
+
 
 }

@@ -34,11 +34,20 @@
 </div>
 
 </div>
-<div class="right"><iframe src="/TES1/welcome" name="fu"  style="width: 1220px;height: 830px"></iframe>
+<div class="right">
+    <iframe src="/TES1/dlist" name="fu"  style="width: 1500px;height: 840px"></iframe>
 </div>
+<<<<<<< HEAD
 <div id="t1"></div>
-
+=======
+<!--<input id="tt" style="width:200px" />-->
 <script>
+    $('#tt').tree({
+        url:'TES1/getIndexTree',//将你的菜单拼成这个json格式id，text，child等
+        onClick: function(node){
+            //点击后在右边的框架里打开url
+        }}
+    );
     $(function(){
         $("#t1").tree({
             url:'/TES1/getMenu.do'

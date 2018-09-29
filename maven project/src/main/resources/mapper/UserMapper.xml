@@ -3,6 +3,15 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tes1.dao.managerDao">
+
+	<resultMap type="com.tes1.entity.Department" id="DeptResult">
+		<id property="DeptID" column="DeptID" />
+		<result property="DeptCode" column="DeptCode" />
+		<result property="DeptName" column="DeptName" />
+		<result property="DeptDesn" column="DeptDesn" />
+		<result property="State" column="State" />
+	</resultMap>
+
 <select id="getUser" parameterType="com.tes1.entity.User" resultType="com.tes1.entity.User">
 		SELECT * FROM users where UserName=#{username} and Password=#{password}
 	</select>
@@ -15,5 +24,39 @@ and tree.TreeID=rolepermissions.TreeID
 and tree.ParentID=rolepermissions.ParentID
 and users.userid=#{userid}
 </select>
+	<select id="getDepartment"  parameterType="Map" resultMap="DeptResult">
+		select * from department
+		<where>
+			<if test="DeptName!=null and DeptName!='' ">
+				and DeptName like #{DeptName}
+			</if>
+		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+</select>
+	<select id="getTotal" parameterType="Map" resultType="Long">
+		select count(*) from department
+		<where>
+			<if test="DeptName!=null and DeptName!='' ">
+				and DeptName like #{DeptName}
+			</if>
+		</where>
+	</select>
+	<insert id="addDept" parameterType="com.tes1.entity.Department">
+        insert into department(DeptCode,DeptName) values(#{DeptCode},#{DeptName})
 
+    </insert>
+	<update id="updateDept" parameterType="com.tes1.entity.Department">
+		update department
+		<set>
+			<if test="DeptCode != null and DeptCode != ''">DeptCode = #{DeptCode},</if>
+			<if test="DeptName != null and DeptName != ''">DeptName = #{DeptName},</if>
+		</set>
+		where DeptID = #{DeptID}
+	</update>
+
+	<delete id="deleteDept" parameterType="Integer">
+    delete from department where DeptID = #{DeptID}
+    </delete>
 </mapper>

@@ -3,9 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
     <!--扫描控制器 -->
     <context:component-scan base-package="com.tes1"></context:component-scan>
 
@@ -25,6 +28,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
     </mvc:annotation-driven>
     <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
     <mvc:resources location="/WEB-INF/script/" mapping="/js/**"/>
+    <mvc:resources location="/WEB-INF/js/" mapping="/jss/**"/>
     <mvc:resources location="/WEB-INF/img/" mapping="/img/**"/>
     <mvc:resources location="/WEB-INF/themes/" mapping="/themes/**"/>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -34,4 +38,5 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
         <!-- 最大文件大小，-1为不限制大小 -->
         <property name="maxUploadSize" value="-1"/>
     </bean>
+
 </beans>
