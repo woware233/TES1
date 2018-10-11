@@ -87,6 +87,7 @@ $(document).ready(function(){
 	    columns:[[
 	    	{field:'id',title:'院系Id',width:200},
 	        {field:'departmentName',title:'院系名',width:200},
+            {field:'deptPid',title:'pid',width:200},
 	    ]],   
 	    pagination:true,//如果表格需要支持分页，必须设置该选项为true
 	    pageSize:17,   //表格中每页显示的行数
@@ -127,7 +128,9 @@ $(document).ready(function(){
 					} 
     			}];*/
             	//创建窗口
-            	createModalDialog("dialog_add","/TCES/moduls/Department/AddDepartment.jsp","添加院系", 500, 300);
+
+
+                createModalDialog("dialog_add","/TCES/moduls/Department/AddDepartment.jsp","添加院系", 500, 300);
             	$("#dialog_add").dialog('open');//打开窗口 
             }
         }, '-', {
@@ -181,7 +184,9 @@ $(document).ready(function(){
 						}
 	    			}];
 	            	//创建窗口
-	            	createModalDialog("dialog_edit","findDepartmentByIdAction?Id="+rowId+"","修改功能", 500, 300,'icon-modify',_buttons);
+
+
+                    createModalDialog("dialog_edit","findDepartmentByIdAction?Id="+rowId+"","修改功能", 500, 300,'icon-modify',_buttons);
 	            	$("#dialog_edit").dialog('open');
                 }
             }
@@ -249,6 +254,8 @@ $(document).ready(function(){
 	   }
    }]
 	});
+
+
 	function createModalDialog(id, _url, _title, _width, _height, _icon,_buttons){
 	    $("body").append("<div id='"+id+"' class='easyui-window'></div>");
 	    if (_width == null)
@@ -273,7 +280,65 @@ $(document).ready(function(){
 	    });
 	}
 });
+
+function convert(rows){
+    function exists(rows, deptPid){
+        for(var i=0; i<rows.length; i++){
+            if (rows[i].id == deptPid) return true;
+        }
+        return false;
+    }
+    var toDo = [];
+    var nodes = [];
+    // get the top level nodes
+    for(var i=0; i<rows.length; i++){
+        var row = rows[i];
+        if (!exists(rows, row.deptPid)){
+            nodes.push({
+                id:row.id,
+                text:row.departmentName,
+                iocnCls:'icon-filter',
+                attributes:{
+                    id:row.id,
+                    name: row.departmentName,
+                    parentId: row.deptPid
+                }
+            });
+        }
+    }
+    for(var i=0; i<nodes.length; i++){
+        toDo.push(nodes[i]);
+    }
+
+    while(toDo.length){
+        var node = toDo.shift();	// the parent node
+        // get the children nodes
+        for(var i=0; i<rows.length; i++){
+            var row = rows[i];
+            if (row.deptPid == node.id){
+                var child = {
+                    id:row.id,
+                    text:row.departmentName,
+                    attributes:{
+                        id:row.id,
+                        name: row.departmentName,
+                        parentId: row.deptPid
+                    }
+                };
+                if (node.children){
+                    node.children.push(child);
+                } else {
+                    node.children = [child];
+                }
+                toDo.push(child);
+            }
+        }
+    }
+    return nodes;
+}
 </script>
 
-<table id="dg_dept"></table>
+<div class="easyui-layout page_left">
+    <ul id="dept_list" class="easyui-tree" data-options="url:'getDeptTree',loadFilter:convert,dataType:'json',animate:true"></ul>
+</div>
 <div id=""></div>

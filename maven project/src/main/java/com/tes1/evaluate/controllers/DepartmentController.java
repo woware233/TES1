@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +30,31 @@ import com.tes1.evaluate.service.DepartmentService;
 public class DepartmentController {
 		@Autowired
 		private DepartmentService departmentservice;
-		//返回批次列表		
-				@RequestMapping("/departmentAction")
+		//返回批次列表
+
+    @RequestMapping("/initDeptTree")
+    @ResponseBody
+    public ModelAndView findQuotaList(HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView("forward:/moduls/Department/DepartmentManger.jsp");
+        return modelAndView;
+    }
+
+		@RequestMapping("/getDeptTree")
+		@ResponseBody
+		public List<Department> getDeptList(HttpServletResponse response) {
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html");
+			return departmentservice.finddepartmentlist();
+		}
+
+	private ModelAndView findDeptList() {
+		List<Department> deptList = departmentservice.finddepartmentlist();
+		JSONArray jsonArray = JSONArray.fromObject(deptList);
+		ModelAndView modelAndView = new ModelAndView("forward:/moduls/Department/DepartmentManager.jsp");
+		modelAndView.addObject("dept", jsonArray.toString());
+		return modelAndView;
+	}
+				/*@RequestMapping("/departmentAction")
 				@ResponseBody
 				public DepartmentList obtainDepartmentSearchList(HttpServletRequest request, HttpServletResponse response) throws IOException{
 					request.setCharacterEncoding("UTF-8");
@@ -64,7 +88,7 @@ public class DepartmentController {
 			        departmentList.setTotal(total);
 			        
 					return departmentList;
-				}
+				}*/
 				
 		//增加院系信息
 		@RequestMapping("/addDepartmentAction")

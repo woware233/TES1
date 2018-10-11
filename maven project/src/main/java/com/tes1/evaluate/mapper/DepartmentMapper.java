@@ -8,13 +8,13 @@ import com.tes1.evaluate.domain.Department;
 
 
 public interface DepartmentMapper {
-	//��ѯ���а༶
+    List<Department> finddepartmentlist();
 	List<Department> findalldepartment(Department department);
-	//���Ӱ༶
+
 	boolean addDepartment(Department department);
-	//ͨ����ѯid �޸İ༶
+
 	Department findallDepartmentById(Integer id);
-	//�޸İ༶
+
 	
 	
 	

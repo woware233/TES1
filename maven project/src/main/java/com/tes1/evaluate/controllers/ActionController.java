@@ -179,12 +179,12 @@ public class ActionController {
 		String filter = request.getParameter("filter");
 		filter = filter == null ? "%%" : ("%" + filter + "%");
 
-		// 4 鑾峰彇鍒楄〃鎬绘暟
+		//
 		int total = actionService.getActionListTotal(filter);
 		System.out.print("AAAAAA" + total);
 		ActionList actionList = new ActionList();
 		if (total > 0) {
-			// 5 鑾峰彇鐢ㄦ埛鍒楄〃
+			//
 			List<Action> list = actionService.getActionList(page, rows, filter);
 			actionList.setRows(list);
 		}

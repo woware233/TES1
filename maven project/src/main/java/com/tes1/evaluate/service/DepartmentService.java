@@ -15,6 +15,9 @@ public class DepartmentService {
 	@Autowired
 	private DepartmentMapper  departmentmapper;
 	//查找所有院系
+
+	public List<Department> finddepartmentlist(){return departmentmapper.finddepartmentlist();}
+
 	public List<Department> findalldepartment(Department department) {
 		return departmentmapper.findalldepartment(department);
 	}

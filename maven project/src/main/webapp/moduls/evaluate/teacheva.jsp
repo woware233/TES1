@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script type="text/javascript">
 $(document).ready(function(){
+
 	$("#sum").click(function(){
         $("#sum").attr("type","hidden");
 		var studentId="<%=request.getParameter("studentId")%>"; 
@@ -41,18 +42,36 @@ li{
             list-style-type:none;
             float: left;
         }
+.table_2{
+    width: 99%;
+    background: rgba(185, 239, 194, 0.08);
+}
+.table_2 tbody tr:nth-child(odd) td {
+    background: #90c1a7;
+    padding-left: 20px;
+}
+.table_2 td{
+    height: 50px;
+}
 
 </style>
 <div style="width: 80%;margin: auto;">
 <form>
+    <div>
+        <table class="table_2" style="">
+
 <c:forEach items="${quotas}" var="quotas">
-<p style="background:#99FF99;"> ${quotas.getNumber()}&nbsp;${quotas.getQuotaName()}</p>
+    <tr><td colspan="4">${quotas.getNumber()}&nbsp;${quotas.getQuotaName()}</td></tr>
+    <tr>
 <c:forEach items="${quotas.quotaoptions}" var="quotaoptions">
-<input type="radio" name="${quotas.id}" value="${quotaoptions.optionScore}">${quotaoptions.optionsName}</input>
+<td><input type="radio" name="${quotas.id}" value="${quotaoptions.optionScore}">${quotaoptions.optionsName}</input></td>
 </c:forEach>
+    </tr>
 </c:forEach>
-<div>
-<input id="sum" type="button" value="提交">
+<div style="buttom:2%;position: relative;left: 50%">
+<p id="tname"><%=request.getParameter("username")%></p><input class="sum" id="sum" type="button" value="提交">
 </div>
+        </table>
+    </div>
 </form>
 </div>
