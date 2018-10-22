@@ -73,7 +73,7 @@ public class ActionController {
 		ModelAndView modelAndView;
 		List<Action> actions = actionService.findAction(action);
 		String id = request.getParameter("id");
-		System.out.println("LLLLLLLLLLLLL" + id);
+		System.out.println(id);
 		if (actions != null) {
 			modelAndView = new ModelAndView("forward:/findScaleByIdAction");
 			modelAndView.addObject("actions", actions);
@@ -119,27 +119,27 @@ public class ActionController {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		int page = 0, rows = 10;
-		// 1 姣忛〉琛屾暟
+
 		String rowstr = request.getParameter("rows");
 		if (rowstr != null && !rowstr.equals(""))
 		{rows = Integer.parseInt(rowstr);}
-		// 2 椤电爜
+
 		String pagestr = request.getParameter("page");
 		if (pagestr != null && !pagestr.equals("")) {
 			page = Integer.parseInt(pagestr);
 			if (page > 0)
             {page = (page - 1) * rows;}
 		}
-		// 3 杩囨护鏉′欢
+
 		String filter = request.getParameter("filter");
 		filter = filter == null ? "%%" : ("%" + filter + "%");
 
-		// 4 鑾峰彇鍒楄〃鎬绘暟
+
 		int total = actionService.getActionListTotal(filter);
-		System.out.print("AAAAAAAAAA" + total);
+
 		ActionList actionList = new ActionList();
 		if (total > 0) {
-			// 5 鑾峰彇鐢ㄦ埛鍒楄〃
+
 			List<Action> list = actionService.getActionList(page, rows, filter);
 			actionList.setRows(list);
 		}
@@ -181,7 +181,7 @@ public class ActionController {
 
 		//
 		int total = actionService.getActionListTotal(filter);
-		System.out.print("AAAAAA" + total);
+		System.out.print(total);
 		ActionList actionList = new ActionList();
 		if (total > 0) {
 			//
@@ -193,9 +193,7 @@ public class ActionController {
 		return actionList;
 	}
 
-	/**
-	 * 澧炲姞鍔熻兘
-	 */
+
 	@RequestMapping("/addActionAction")
 	public ModelAndView addAction(@Valid Action action, HttpServletRequest request) {
 		ModelAndView modelAndView;
@@ -281,7 +279,7 @@ public class ActionController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (ids == null || ids.equals("")) {
 			map.put("success", 0);
-			map.put("msg", "鏃犲彲鍒犻櫎鍔熻兘");
+			map.put("msg", "Del");
 			return map;
 		} else {
 			// int result =
@@ -307,10 +305,10 @@ public class ActionController {
 	@RequestMapping("/updateActionAction")
 	public ModelAndView updateAction(Action action) {
 		ModelAndView modelAndView;
-		System.out.println("999999999999999" + action.getId());
+
 		int ret = actionService.updateActionById(action);
 		if (ret > 0) {
-			String finish_Url = "/TCES/moduls/action/actionManager.jsp";
+			String finish_Url = "/TCES1/moduls/action/actionManager.jsp";
 			modelAndView = new ModelAndView("forward:/finish.jsp");
 			modelAndView.addObject("finish_Url", finish_Url);
 		} else {

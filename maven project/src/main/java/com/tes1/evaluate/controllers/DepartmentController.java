@@ -31,8 +31,45 @@ public class DepartmentController {
 		@Autowired
 		private DepartmentService departmentservice;
 		//返回批次列表
+		@RequestMapping("/departmentAction")
+		@ResponseBody
+		public DepartmentList obtainDepartmentSearchList(HttpServletRequest request, HttpServletResponse response) throws IOException{
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html");
+			int page = 0, rows = 20;
+			//1 每页行数
+			String rowstr = request.getParameter("rows") ;
+			if(rowstr!=null && !rowstr.equals("")) {
+				rows = Integer.parseInt(rowstr);
+			}
+			//2 页码
+			String pagestr = request.getParameter("page") ;
+			if(pagestr!=null && !pagestr.equals("")){
+				page = Integer.parseInt(pagestr);
+				if(page>0) {
+					page = (page-1)*rows;
+				}
+			}
+			//3 过滤条件
+			String filter = request.getParameter("filter");
+			filter = filter==null ? "%%" : ("%"+filter+"%");
 
-    @RequestMapping("/initDeptTree")
+			//4 获取列表总数
+			int total = departmentservice.getDepartmentListTotal(filter);
+			System.out.print("用户总数："+total);
+			DepartmentList departmentList= new DepartmentList();
+			if(total>0){
+				//5 获取用户列表
+				List<Department> list = departmentservice.getDepartmentList(page, rows, filter);
+				departmentList.setRows(list);
+			}
+			departmentList.setTotal(total);
+
+			return departmentList;
+		}
+
+	@RequestMapping("/initDeptTree")
     @ResponseBody
     public ModelAndView findQuotaList(HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView("forward:/moduls/Department/DepartmentManger.jsp");

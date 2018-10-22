@@ -14,10 +14,17 @@ public class QuotaoptionsService {
 	private QuotaoptionsMapper quotaoptionsMapper;
 	/**
 	 * 根据用户ID获取菜单列表
-	 * @param userId
+	 * @param
 	 * @return
 	 */
 	public List<Quotaoptions> findQuotaoptionsListByUserId(int quotaId){
 		return quotaoptionsMapper.findQuotaoptionsListByUserId(quotaId);
+	}
+
+	public int addQuotaOptionsByExcel(Quotaoptions quotaoptions){
+		return quotaoptionsMapper.addQuotaOptionsByExcel(quotaoptions);
+	}
+	public int insertoptions(int quotaId){
+		return  quotaoptionsMapper.insertoptions(quotaId);
 	}
 }

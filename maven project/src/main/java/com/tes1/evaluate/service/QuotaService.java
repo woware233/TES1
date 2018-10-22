@@ -18,6 +18,9 @@ public class QuotaService {
 	private QuotaMapper quotaMapper;
 	@Autowired
 	private QuotaoptionsMapper quotaOptionsMapper;
+
+	public int addQuotaByExcel(Quota quota){return quotaMapper.addQuotaByExcel(quota);}
+	public Quota findIdByName(Quota quota){return quotaMapper.findIdByName(quota);}
 	/**
 	 * 根据用户ID获取菜单列表
 	 * @param user

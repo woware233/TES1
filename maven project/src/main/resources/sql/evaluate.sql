@@ -20,7 +20,7 @@ CREATE TABLE `action` (
 # Data for table "action"
 #
 
-INSERT INTO `action` VALUES (1,'在线评教系统',NULL,0),(2,'系统管理',NULL,1),(3,'业务管理',NULL,1),(4,'其他',NULL,1),(5,'用户管理','/TCES/moduls/user/userManager.jsp',2),(6,'角色管理',' \r\n\r\n/TCES/moduls/scale/scaleManager.jsp',2),(7,'功能管理','/TCES/moduls/action/actionManager.jsp',2),(8,'指标管理','/TCES/initQuotaTree',2),(9,'授课管理','/TCES/moduls/Teachinginfo/teachingManager.jsp',3),(10,'课程管理','/TCES/moduls/course/ReadCourse.jsp',3),(11,'评教管理','/TCES/moduls/State/StateManger.jsp',3),(12,'班级管理','/TCES/moduls/Classinfo/ClassinfoManger.jsp',3),(13,'批次管理','/TCES/moduls/Batchinfo/BatchManger.jsp',3),(14,'在线评教','/TCES/fallbatch',4),(15,'查看成绩','/TCES/moduls/Score/score.jsp',4),(16,'院系管理','/TCES/moduls/Department/DepartmentManger.jsp',3);
+INSERT INTO `action` VALUES (1,'在线评教系统',NULL,0),(2,'系统管理',NULL,1),(3,'业务管理',NULL,1),(4,'其他',NULL,1),(5,'用户管理','/TCES1/moduls/user/userManager.jsp',2),(6,'角色管理',' \r\n\r\n/TCES1/moduls/scale/scaleManager.jsp',2),(7,'功能管理','/TCES1/moduls/action/actionManager.jsp',2),(8,'指标管理','/TCES1/initQuotaTree',2),(9,'授课管理','/TCES1/moduls/Teachinginfo/teachingManager.jsp',3),(10,'课程管理','/TCES1/moduls/course/ReadCourse.jsp',3),(11,'评教管理','/TCES1/moduls/State/StateManger.jsp',3),(12,'班级管理','/TCES1/moduls/Classinfo/ClassinfoManger.jsp',3),(13,'批次管理','/TCES1/moduls/Batchinfo/BatchManger.jsp',3),(14,'在线评教','/TCES1/fallbatch',4),(15,'查看成绩','/TCES1/moduls/Score/score.jsp',4),(16,'院系管理','/TCES1/moduls/Department/DepartmentManger.jsp',3);
 
 #
 # Structure for table "avgscores"

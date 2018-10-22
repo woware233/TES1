@@ -18,4 +18,7 @@ public interface QuotaoptionsMapper {
     int updateByPrimaryKey(Quotaoptions record);
     List<Quotaoptions> selectqutaoptions(Integer id);
 	List<Quotaoptions> findQuotaoptionsListByUserId(int quotaId);
+    int addQuotaOptionsByExcel(Quotaoptions quotaoptions);
+
+   int insertoptions(int quotaId);
 }

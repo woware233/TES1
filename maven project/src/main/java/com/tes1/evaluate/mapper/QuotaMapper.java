@@ -27,4 +27,9 @@ public interface QuotaMapper {
 	int AddQuota(Quota quota);
 
 	int updateQuotaById(Quotaid quotaid);
+
+    int addQuotaByExcel(Quota record);
+
+    Quota findIdByName(Quota quota);
+
 }

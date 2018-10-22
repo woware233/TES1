@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.tes1.evaluate.domain.Classinfo;
+import com.tes1.evaluate.service.ClassinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,7 @@ import com.tes1.evaluate.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	private ClassinfoService classinfoService;
 	@RequestMapping("/login")
 	public String login(User user,HttpServletRequest request) {
 		User users=userService.findUser(user);
@@ -91,7 +94,7 @@ public class UserController {
         if(total>0){
         	//5 获取用户列表
             List<User> list = userService.getUserList(page, rows, filter);
-            userList.setRows(list);
+			userList.setRows(list);
         }
         userList.setTotal(total);
         
@@ -182,12 +185,11 @@ public class UserController {
 		String[]   values   =   request.getParameterValues("scaList");
 	
 		List<userScale> userscalesList=new ArrayList<userScale>();
-	
 		for(int i=0;i<values.length;i++){
 			userScale userscale=new userScale();
 			String scaleid = values[i];
 			System.out.println("哇哈哈哈哈红红火火恍恍惚惚"+scaleid);
-			
+
 			int userId = user.getId();
 			System.out.println(userId);
 			userscale.setScaleId(Integer.parseInt(scaleid));

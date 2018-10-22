@@ -10,32 +10,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import com.tes1.evaluate.domain.*;
+import com.tes1.evaluate.service.ClassinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tes1.evaluate.domain.Action;
-import com.tes1.evaluate.domain.Scale;
-import com.tes1.evaluate.domain.ScaleList;
-import com.tes1.evaluate.domain.User;
-import com.tes1.evaluate.domain.scaleAction;
-import com.tes1.evaluate.domain.userScale;
 import com.tes1.evaluate.service.ScaleService;
 
 @Controller
 public class scaleController {
 	@Autowired
+    private ClassinfoService classinfoService;
+    @Autowired
 	private ScaleService scaleService;
+
+
 	// 查询角色信息
 	@RequestMapping("/findScaleAction")
-	public ModelAndView findScale(Scale scale,HttpServletRequest request){
+	public ModelAndView findScale(Scale scale, HttpServletRequest request){
+
 		ModelAndView modelAndView;
 		List<Scale> scales = scaleService.findScale(scale);
+		List<Classinfo> classinfoList=classinfoService.findclasslist();
+
 		if (scales!=null) {
 			modelAndView=new ModelAndView("forward:/moduls/user/add.jsp");
 			modelAndView.addObject("scales", scales) ;
+			modelAndView.addObject("classlist", classinfoList) ;
 		} else {
 			modelAndView=new ModelAndView("loginfailed");
 		}

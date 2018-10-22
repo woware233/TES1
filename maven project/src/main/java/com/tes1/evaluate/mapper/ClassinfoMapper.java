@@ -28,5 +28,5 @@ public interface ClassinfoMapper {
 	List<Classinfo> findclassid(Integer Id);
 	
 	int deleteClassinfoById(List<Integer> list);
-	
+	List<Classinfo> findclasslist();
 }

@@ -30,6 +30,10 @@ public class ClassinfoService {
 		public List<Classinfo> findclassinfolist(Classinfo classinfo) {
 			return classinfomapper.findclassinfolist(classinfo);
 		}
+
+		public List<Classinfo> findclasslist(){
+			return classinfomapper.findclasslist();
+		}
 		//修改班级信息
 		public boolean UpdateClassinfo(Classinfo classinfo) {
 			return classinfomapper.updateClassinfo(classinfo);
